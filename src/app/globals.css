@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Changing a value here updates every component,
+ * so the whole UI can be re-themed from one place.
+ */
+@theme {
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #d9e5ff;
+  --color-brand-200: #bcd2ff;
+  --color-brand-300: #8eb5ff;
+  --color-brand-400: #598eff;
+  --color-brand-500: #3366ff;
+  --color-brand-600: #1d45f5;
+  --color-brand-700: #1834e1;
+  --color-brand-800: #1a2eb6;
+  --color-brand-900: #1c2e8f;
+
+  --color-ink-50: #f6f8fb;
+  --color-ink-100: #eceff5;
+  --color-ink-200: #d5dae4;
+  --color-ink-300: #b0b9c9;
+  --color-ink-400: #8592a8;
+  --color-ink-500: #66738c;
+  --color-ink-600: #515c72;
+  --color-ink-700: #424b5c;
+  --color-ink-800: #39404d;
+  --color-ink-900: #1f2430;
+
+  --color-ok-500: #16a34a;
+  --color-warn-500: #f59e0b;
+  --color-bad-500: #dc2626;
+  --color-info-500: #0ea5e9;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink-50 text-ink-900 antialiased;
+  }
+
+  /* Visible focus ring for keyboard users on every interactive element. */
+  :where(a, button, input, select, textarea):focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+}
+
+@layer utilities {
+  .card {
+    @apply rounded-2xl border border-ink-200/70 bg-white shadow-sm;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+}
+
+/* Recharts leaves a focus outline on the SVG wrapper; the chart is not interactive by keyboard. */
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}
